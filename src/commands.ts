@@ -112,6 +112,17 @@ export function getCommands(
         ]
       : []),
 
+    ...(granularity === "day"
+      ? [
+          {
+            id: "open-yesterdays-daily-note",
+            name: "Open yesterday's daily note",
+            callback: () =>
+              plugin.openPeriodicNote("day", window.moment().subtract(1, "day")),
+          },
+        ]
+      : []),
+
     {
       id: `next-${config.periodicity}-note`,
       name: `Jump forwards to closest ${config.periodicity} note`,
