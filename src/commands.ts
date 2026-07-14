@@ -123,6 +123,17 @@ export function getCommands(
         ]
       : []),
 
+    ...(granularity === "week"
+      ? [
+          {
+            id: "open-next-weeks-note",
+            name: "Open next week's note",
+            callback: () =>
+              plugin.openPeriodicNote("week", window.moment().add(1, "week")),
+          },
+        ]
+      : []),
+
     {
       id: `next-${config.periodicity}-note`,
       name: `Jump forwards to closest ${config.periodicity} note`,
